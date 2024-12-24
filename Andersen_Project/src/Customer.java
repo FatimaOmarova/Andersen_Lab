@@ -23,11 +23,11 @@ public class Customer {
         return password;
     }
 
-    public static void browseSpaces() {
+    public void browseSpaces() {
         CoworkingSpace.getAvailableSpaces();
     }
 
-    public static void makeReservation() {
+    public void makeReservation() {
         System.out.println("Enter the details of the space you want to reserve:(reservation, space, date, start time, end time)");
         int reservationId = Main.scanner.nextInt();
         int spaceId = Main.scanner.nextInt();
@@ -39,14 +39,14 @@ public class Customer {
         System.out.println("Reservation added successfully.");
     }
 
-    public static void cancelReservation() {
+    public void cancelReservation() {
         System.out.println("Enter the id of the reservation you want to remove:");
         int id = Main.scanner.nextInt();
         Reservation.removeReservation(id);
         System.out.println("Reservation removed successfully.");
     }
 
-    public static void viewReservation() {
+    public void viewReservation() {
         System.out.println("Enter the id of the reservation you want to view:");
         int reservationId = Main.scanner.nextInt();
         Reservation.getReservation(reservationId);

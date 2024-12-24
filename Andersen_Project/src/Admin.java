@@ -17,7 +17,7 @@ public class Admin {
         return password;
     }
 
-    public static void addCoworkingSpace() {
+    public void addCoworkingSpace() {
         System.out.println("Enter space details(id, type, price, availability):");
         Scanner input = new Scanner(System.in);
         int id = input.nextInt();
@@ -29,7 +29,7 @@ public class Admin {
         System.out.println("Space added successfully.");
     }
 
-    public static void removeCoworkingSpace() {
+    public void removeCoworkingSpace() {
         System.out.println("Enter space id you want to remove:");
         Scanner input = new Scanner(System.in);
         int id = input.nextInt();
@@ -37,7 +37,7 @@ public class Admin {
         System.out.println("Space removed successfully.");
     }
 
-    public static void updateCoworkingSpace() {
+    public void updateCoworkingSpace() {
         System.out.println("Enter space id you want to update:");
         Scanner input = new Scanner(System.in);
         int id = input.nextInt();
@@ -47,7 +47,7 @@ public class Admin {
         System.out.println("Space updated successfully.");
     }
 
-    public static void viewAllReservations() {
+    public void viewAllReservations() {
         Reservation.getAllReservations();
     }
 }
