@@ -1,0 +1,4 @@
+1,Meeting Office,500,true
+2,Open Space,200,true
+3,Private Room,300,false
+4,Entertainment Area,600,false
