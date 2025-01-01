@@ -7,7 +7,6 @@ public class FileHandling {
             String line;
             while((line = br.readLine()) != null){
                 new CoworkingSpace(line);
-                System.out.println("here");
             }
         }
         catch (IOException e){

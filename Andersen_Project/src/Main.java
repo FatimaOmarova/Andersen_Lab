@@ -21,6 +21,15 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        try{
+            CustomClassLoader loader =  new CustomClassLoader();
+            Class<?> loadedClass = loader.loadClass("Main");
+            Object instance = loadedClass.getDeclaredConstructor().newInstance();
+            System.out.println("Class loaded successfully " + loadedClass.getName());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
         Login.login();
     }
 }
