@@ -34,7 +34,6 @@ public class Admin {
         Scanner input = new Scanner(System.in);
         int id = input.nextInt();
         CoworkingSpace.removeSpace(id);
-        System.out.println("Space removed successfully.");
     }
 
     public void updateCoworkingSpace() {

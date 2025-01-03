@@ -1,3 +1,5 @@
+import java.io.File;
+
 public class Menu {
     protected static void adminMenu(Admin user) {
         System.out.println("Admin Menu: ");
@@ -34,6 +36,7 @@ public class Menu {
                     break;
                 case 5:
                     System.out.println("Logging out");
+                    FileHandling.saveSpacesToFile(Main.fileName);
                     Main.loggedInUser = null;
                     Login.login();
                     return;
@@ -80,6 +83,7 @@ public class Menu {
 
                 case 5:
                     System.out.println("Logging out");
+                    FileHandling.saveSpacesToFile(Main.fileName);
                     Main.loggedInUser = null;
                     Login.login();
                     return;

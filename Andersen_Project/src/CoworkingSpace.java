@@ -15,6 +15,15 @@ public class CoworkingSpace {
         Main.spaces.add(this);
     }
 
+    public CoworkingSpace(String line) {
+        String[] parts = line.split(",");
+        this.id = Integer.parseInt(parts[0]);
+        this.type = parts[1];
+        this.price = Integer.parseInt(parts[2]);
+        this.availability = Boolean.parseBoolean(parts[3]);
+        Main.spaces.add(this);
+    }
+
     public int getId() {
         return id;
     }
@@ -33,12 +42,7 @@ public class CoworkingSpace {
 
     @Override
     public String toString() {
-        return "CoworkingSpace{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", price=" + price +
-                ", availability=" + availability +
-                '}';
+        return "CoworkingSpace{" + "id=" + id + ", type='" + type + ", price=" + price + ", availability=" + availability + '}';
     }
 
     public void print() {
@@ -46,11 +50,27 @@ public class CoworkingSpace {
     }
 
     public static void removeSpace(int id) {
-        Main.spaces.removeIf(space -> space.getId() == id);
+        try {
+            boolean removed = Main.spaces.removeIf(space -> space.getId() == id);
+            if (!removed) {
+                throw new CustomException("No coworking space is found within specified id!");
+            }
+            System.out.println("Space removed successfully.");
+        } catch (CustomException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void getAvailableSpaces() {
-        System.out.println(Main.spaces.stream().filter(CoworkingSpace::isAvailability).toList());
+        try {
+            boolean check = Main.spaces.stream().filter(CoworkingSpace::isAvailability).toList().isEmpty();
+            if (check) {
+                throw new CustomException("No available coworking space is found");
+            }
+            System.out.println(Main.spaces.stream().filter(CoworkingSpace::isAvailability).toList());
+        } catch (CustomException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void getSpaces() {
