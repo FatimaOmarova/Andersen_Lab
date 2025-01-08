@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CoworkingSpace {
     private int id;
@@ -51,10 +52,11 @@ public class CoworkingSpace {
 
     public static void removeSpace(int id) {
         try {
-            boolean removed = Main.spaces.removeIf(space -> space.getId() == id);
-            if (!removed) {
+            Optional<CoworkingSpace> removed = Main.spaces.stream().filter(space -> space.getId() == id).findFirst();
+            if (removed.isEmpty()) {
                 throw new CustomException("No coworking space is found within specified id!");
             }
+            Main.spaces.remove(removed.get());
             System.out.println("Space removed successfully.");
         } catch (CustomException e) {
             System.out.println(e.getMessage());
