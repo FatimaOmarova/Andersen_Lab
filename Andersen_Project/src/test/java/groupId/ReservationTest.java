@@ -1,6 +1,5 @@
 package groupId;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -20,7 +19,7 @@ public class ReservationTest {
         verify(mockReservation).getSpaceId();
     }
     @Test
-    public void testReservation() {
+    public void givenValidInput_whenMakeReservationIsCalled_thenReturnTrue() {
         Main.reservations.clear();
         CoworkingSpace testSpace = new CoworkingSpace("8,Test Space,200,true");
         Main.customerList.put(101, new Customer(101, "Test Customer", "password"));

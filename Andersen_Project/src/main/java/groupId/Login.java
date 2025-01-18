@@ -23,7 +23,7 @@ public class Login {
         }
     }
 
-    private static void adminLogin() {
+    static void adminLogin() {
         System.out.print("Enter admin username: ");
         String username = Main.scanner.nextLine();
         System.out.print("Enter admin password: ");

@@ -36,6 +36,7 @@ public class Customer {
         int startTime = Main.scanner.nextInt();
         int endTime = Main.scanner.nextInt();
         Reservation.makeReservation(reservationId, spaceId, customerId, date, startTime, endTime);
+
     }
     public void cancelReservationService(){
         Reservation.cancelReservation();
