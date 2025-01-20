@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Scanner;
+package groupId;
 
 public class Reservation {
     private int reservationId;
@@ -68,7 +67,35 @@ public class Reservation {
     }
 
     public static void getReservation(int reservationId) {
+
         System.out.println(Main.reservations.stream().filter(reservation -> reservation.getReservationId() == reservationId).findFirst());
+    }
+    public static boolean isValidRequest(int spaceId, int customerId){
+        boolean spaceExist = Main.spaces.stream().anyMatch(space -> space.getId()==spaceId);
+        boolean available = Main.spaces.stream().filter(space -> space.getId() == spaceId).allMatch(CoworkingSpace::isAvailability);
+        boolean customerExist = Main.customerList.containsKey(customerId);
+        return (spaceExist && available && customerExist);
+    }
+    public static boolean makeReservation(int reservationId, int spaceId, int customerId, int date, int startTime, int endTime) {
+        if(isValidRequest(spaceId, customerId)) {
+            Reservation reservation = new Reservation(reservationId, spaceId, customerId, date, startTime, endTime);
+            System.out.println("Reservation added successfully.");
+            return true;
+        }
+        return false;
+    }
+
+    public static void cancelReservation() {
+        System.out.println("Enter the id of the reservation you want to remove:");
+        int id = Main.scanner.nextInt();
+        removeReservation(id);
+        System.out.println("Reservation removed successfully.");
+    }
+
+    public static void viewReservation() {
+        System.out.println("Enter the id of the reservation you want to view:");
+        int reservationId = Main.scanner.nextInt();
+        getReservation(reservationId);
     }
 
 

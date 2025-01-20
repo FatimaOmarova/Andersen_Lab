@@ -1,4 +1,4 @@
-import java.io.File;
+package groupId;
 
 public class Menu {
     protected static void adminMenu(Admin user) {
@@ -32,7 +32,7 @@ public class Menu {
 
                 case 4:
                     System.out.println("Viewing all reservations");
-                    user.viewAllReservations();
+                    user.viewAllReservationsService();
                     break;
                 case 5:
                     System.out.println("Logging out");
@@ -68,17 +68,17 @@ public class Menu {
                     break;
                 case 2:
                     System.out.println("Making a reservation");
-                    user.makeReservation();
+                    user.makeReservationService();
                     break;
 
                 case 3:
                     System.out.println("Viewing reservation");
-                    user.viewReservation();
+                    user.viewReservationService();
                     break;
 
                 case 4:
                     System.out.println("Canceling a reservation");
-                    user.cancelReservation();
+                    user.cancelReservationService();
                     break;
 
                 case 5:

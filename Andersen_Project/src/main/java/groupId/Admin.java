@@ -1,3 +1,5 @@
+package groupId;
+
 import java.util.Scanner;
 
 public class Admin {
@@ -46,7 +48,7 @@ public class Admin {
         System.out.println("Space updated successfully.");
     }
 
-    public void viewAllReservations() {
+    public void viewAllReservationsService() {
         Reservation.getAllReservations();
     }
 }

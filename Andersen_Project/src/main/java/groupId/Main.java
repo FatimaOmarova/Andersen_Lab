@@ -1,5 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+package groupId;
+
 import java.util.*;
 
 public class Main {
@@ -23,7 +23,7 @@ public class Main {
     public static void main(String[] args) {
         try{
             CustomClassLoader loader =  new CustomClassLoader();
-            Class<?> loadedClass = loader.loadClass("Main");
+            Class<?> loadedClass = loader.loadClass("groupId.Main");
             Object instance = loadedClass.getDeclaredConstructor().newInstance();
             System.out.println("Class loaded successfully " + loadedClass.getName());
         }

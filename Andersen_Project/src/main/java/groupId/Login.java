@@ -1,5 +1,4 @@
-import java.util.Map;
-import java.util.Scanner;
+package groupId;
 
 public class Login {
     protected static void login() {
