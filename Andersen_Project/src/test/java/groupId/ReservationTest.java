@@ -1,4 +1,5 @@
 package groupId;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,16 +19,21 @@ public class ReservationTest {
         verify(mockReservation).getReservationId();
         verify(mockReservation).getSpaceId();
     }
+
     @Test
     public void givenValidInput_whenMakeReservationIsCalled_thenReturnTrue() {
-        Main.reservations.clear();
-        CoworkingSpace testSpace = new CoworkingSpace("8,Test Space,200,true");
-        Main.customerList.put(101, new Customer(101, "Test Customer", "password"));
+        CoworkingSpaceDAO.addCoworkingSpace("Test Space", 200, true);
+        CustomerDAO.addCustomer("Test Customer", "password");
 
-        assertTrue(Reservation.isValidRequest(8, 101));
+        int coworkingspace_id = CoworkingSpaceDAO.findIdByType("Test Space");
+        int customer_id = CustomerDAO.findIdByUsername("Test Customer");
 
-        assertTrue(Reservation.makeReservation(1, 8, 101, 20221215, 5, 12));
-        assertEquals(1, Main.reservations.size());
+        int value_before = ReservationDAO.getAllReservation().size();
+
+        Reservation.makeReservation(customer_id, coworkingspace_id, "2022-12-15", "5", "12");
+
+        int value_after = ReservationDAO.getAllReservation().size();
+        assertEquals(value_before + 1, value_after);
     }
 
 }
