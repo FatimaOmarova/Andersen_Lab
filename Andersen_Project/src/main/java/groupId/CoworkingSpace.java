@@ -17,10 +17,11 @@ public class CoworkingSpace {
 
     public CoworkingSpace(String line) {
         String[] parts = line.split(",");
-        this.type = parts[0];
-        this.price = Integer.parseInt(parts[1]);
-        this.availability = Boolean.parseBoolean(parts[2]);
-        CoworkingSpaceDAO.addCoworkingSpace(type, price, availability);
+        this.id = Integer.parseInt(parts[0]);
+        this.type = parts[1];
+        this.price = Integer.parseInt(parts[2]);
+        this.availability = Boolean.parseBoolean(parts[3]);
+        Main.spaces.add(this);
     }
 
     public int getId() {

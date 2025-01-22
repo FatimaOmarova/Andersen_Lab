@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AdminDAO {
+
     public static void getAdmin(String username, String password){
         try (Connection conn = DBConnection.getConnection()) {
             String query = "SELECT * FROM admin WHERE username = ? AND password = ?";
