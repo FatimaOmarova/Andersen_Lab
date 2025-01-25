@@ -20,14 +20,12 @@ public class Admin {
     }
 
     public void addCoworkingSpace() {
-        System.out.println("Enter space details(id, type, price, availability):");
+        System.out.println("Enter space details(type, price, availability):");
         Scanner input = new Scanner(System.in);
-        int id = input.nextInt();
-        input.nextLine();
         String type = input.nextLine();
         int price = input.nextInt();
         boolean availability = input.nextBoolean();
-        CoworkingSpace space = new CoworkingSpace(id, type, price, availability);
+        CoworkingSpace space = new CoworkingSpace(type, price, availability);
         System.out.println("Space added successfully.");
     }
 
@@ -39,14 +37,40 @@ public class Admin {
     }
 
     public void updateCoworkingSpace() {
-        System.out.println("Enter space id you want to update:");
         Scanner input = new Scanner(System.in);
+
+        System.out.println("Enter the space ID you want to update:");
         int id = input.nextInt();
-        CoworkingSpace.removeSpace(id);
         input.nextLine();
-        addCoworkingSpace();
-        System.out.println("Space updated successfully.");
+
+        System.out.println("What you like to update?type/price/availability");
+        String choice = input.nextLine().toLowerCase();
+
+        switch (choice) {
+            case "type":
+                System.out.println("Enter the new type:");
+                String newType = input.nextLine();
+                CoworkingSpaceDAO.updateType(id, newType);
+                break;
+            case "price":
+                System.out.println("Enter the new price:");
+                double newPrice = input.nextDouble();
+                input.nextLine();
+                CoworkingSpaceDAO.updatePrice(id, newPrice);
+                break;
+            case "availability":
+                System.out.println("Enter the new availability:");
+                boolean newAvailability = input.nextBoolean();
+                input.nextLine();
+                CoworkingSpaceDAO.updateAvailability(id, newAvailability);
+                break;
+            default:
+                System.out.println("Invalid choice. Please select 'type', 'price', or 'availability'");
+        }
+
+        System.out.println("Coworking space updated successfully.");
     }
+
 
     public void viewAllReservationsService() {
         Reservation.getAllReservations();

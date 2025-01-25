@@ -8,12 +8,11 @@ public class CoworkingSpace {
     private int price;
     private boolean availability;
 
-    public CoworkingSpace(int id, String type, int price, boolean availability) {
-        this.id = id;
+    public CoworkingSpace(String type, int price, boolean availability) {
         this.type = type;
         this.price = price;
         this.availability = availability;
-        Main.spaces.add(this);
+        CoworkingSpaceDAO.addCoworkingSpace(type, price, availability);
     }
 
     public CoworkingSpace(String line) {
@@ -46,37 +45,18 @@ public class CoworkingSpace {
         return "CoworkingSpace{" + "id=" + id + ", type='" + type + ", price=" + price + ", availability=" + availability + '}';
     }
 
-    public void print() {
-        System.out.println(this);
-    }
-
     public static void removeSpace(int id) {
-        try {
-            Optional<CoworkingSpace> removed = Main.spaces.stream().filter(space -> space.getId() == id).findFirst();
-            if (removed.isEmpty()) {
-                throw new CustomException("No coworking space is found within specified id!");
-            }
-            Main.spaces.remove(removed.get());
-            System.out.println("Space removed successfully.");
-        } catch (CustomException e) {
-            System.out.println(e.getMessage());
-        }
+        CoworkingSpaceDAO.removeSpace(id);
     }
 
     public static void getAvailableSpaces() {
-        try {
-            boolean check = Main.spaces.stream().filter(CoworkingSpace::isAvailability).toList().isEmpty();
-            if (check) {
-                throw new CustomException("No available coworking space is found");
-            }
-            System.out.println(Main.spaces.stream().filter(CoworkingSpace::isAvailability).toList());
-        } catch (CustomException e) {
-            System.out.println(e.getMessage());
-        }
+        CoworkingSpaceDAO.getAvailableSpaces();
     }
-
+    public static boolean existById(int id){
+        return CoworkingSpaceDAO.existsById(id);
+    }
     public static void getSpaces() {
-        System.out.println(Main.spaces);
+        CoworkingSpaceDAO.getSpaces();
     }
 
 }
